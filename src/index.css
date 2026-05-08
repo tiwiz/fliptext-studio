@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #051424;
+  color: #d4e4fa;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography helpers */
+.font-display {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.font-headline {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.font-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+/* Surface colors from DESIGN.md */
+.bg-surface { background-color: #051424; }
+.bg-surface-dim { background-color: #051424; }
+.bg-surface-bright { background-color: #2c3a4c; }
+.bg-surface-container-lowest { background-color: #010f1f; }
+.bg-surface-container-low { background-color: #0d1c2d; }
+.bg-surface-container { background-color: #122131; }
+.bg-surface-container-high { background-color: #1c2b3c; }
+.bg-surface-container-highest { background-color: #273647; }
+
+.text-on-surface { color: #d4e4fa; }
+.text-on-surface-variant { color: #b9cacb; }
+.text-outline { color: #849495; }
+.text-outline-variant { color: #3b494b; }
+
+/* Primary accent - Cyber Teal */
+.bg-primary { background-color: #00F0FF; }
+.text-primary { color: #00F0FF; }
+.text-on-primary { color: #00363a; }
+.bg-primary-container { background-color: #00F0FF; }
+.text-on-primary-container { color: #006970; }
+
+/* Secondary accent */
+.bg-secondary { background-color: #46eaed; }
+.text-secondary { color: #46eaed; }
+.text-on-secondary { color: #003738; }
+
+/* Error */
+.bg-error { background-color: #ffb4ab; }
+.text-error { color: #ffb4ab; }
+
+/* Prevent iOS zoom on input focus */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Safe area for notched phones */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 767px) {
+  button, a {
+    touch-action: manipulation;
+  }
+  
+  main {
+    overscroll-behavior: none;
+  }
+}
