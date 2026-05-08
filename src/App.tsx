@@ -37,7 +37,7 @@ export default function App() {
         compileRef.current = instance.renderToStl.bind(instance);
 
         try {
-          const resp = await fetch('/fonts/NotoSans-Bold.ttf');
+          const resp = await fetch(`${import.meta.env.BASE_URL}fonts/NotoSans-Bold.ttf`);
           if (resp.ok) {
             const fontData = await resp.arrayBuffer();
             const font = opentypeModule.default.parse(fontData);
