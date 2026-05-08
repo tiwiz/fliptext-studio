@@ -117,42 +117,27 @@ export default function App() {
   const isReady = engineReady && fontRef.current !== null;
 
   return (
-    <div className="w-full h-full flex flex-col md:flex-row">
-      {/* === MOBILE TAB BAR === */}
-      <header className="md:hidden flex items-center justify-between px-5 py-3 bg-surface-container border-b border-[#849495]/20 z-20">
-        <h1 className="font-headline text-base text-white tracking-tight">
-          FlipText <span className="text-on-surface-variant font-normal">Studio</span>
-        </h1>
-        <div className="flex gap-1">
-          <button
-            onClick={() => setActiveTab('configure')}
-            className={`px-3.5 py-1.5 rounded text-xs font-medium transition-all ${
-              activeTab === 'configure'
-                ? 'bg-primary/15 text-primary border border-primary/40'
-                : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
-            }`}
-          >
-            ⚙️ Configure
-          </button>
-          <button
-            onClick={() => setActiveTab('preview')}
-            className={`px-3.5 py-1.5 rounded text-xs font-medium transition-all relative ${
-              activeTab === 'preview'
-                ? 'bg-primary/15 text-primary border border-primary/40'
-                : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
-            }`}
-          >
-            👁 Preview
-            {stlData && activeTab !== 'preview' && (
-              <span className="ml-1 w-1.5 h-1.5 bg-secondary rounded-full inline-block" />
-            )}
-          </button>
+    <div className="w-full h-full flex flex-col overflow-hidden bg-background font-body-base">
+      {/* === DESKTOP TOP NAV BAR === */}
+      <header className="hidden md:flex docked full-width top-0 z-50 bg-surface border-b border-outline-variant items-center w-full h-16">
+        <div className="flex items-center pl-[48px]"> {/* px-8 (32px) + 16px = 48px */}
+          <span className="font-headline-md text-[24px] font-bold text-primary tracking-tight [font-variant:small-caps]">FlipText</span>
         </div>
       </header>
 
+      {/* === MOBILE TOP APP BAR === */}
+      <header className="md:hidden fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-md border-b border-outline-variant/10 flex items-center px-0 h-16">
+        <div className="flex items-center pl-[40px]"> {/* Original px-6 (24px) + 16px = 40px */}
+          <span className="font-headline-md font-bold text-on-surface [font-variant:small-caps]">FlipText</span>
+        </div>
+      </header>
+
+      <div className="flex-1 flex flex-col md:flex-row md:h-[calc(100vh-64px)] pt-16 md:pt-0 pb-20 md:pb-0">
+
+
       {/* === INPUT PANEL === */}
       <aside
-        className={`w-full md:w-[280px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full`}
+        className={`w-full md:w-[360px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-container border-r border-outline-variant`}
       >
         <InputPanel
           onGenerate={handleGenerate}
@@ -167,16 +152,40 @@ export default function App() {
 
       {/* === 3D VIEWPORT === */}
       <main
-        className={`flex-1 relative ${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-col h-full`}
+        className={`flex-1 relative ${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-dim overflow-hidden items-center justify-center`}
       >
-        {/* Desktop header */}
-        <div className="hidden md:block absolute top-4 left-4 z-10">
-          <h1 className="font-headline text-lg text-white drop-shadow-lg">
-            Flip Text<span className="text-on-surface-variant font-normal"> Studio</span>
-          </h1>
+        {/* Immersion Canvas Background */}
+        <div className="hidden md:block absolute inset-0 viewport-grid opacity-20 pointer-events-none"></div>
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+        <div className="md:hidden absolute inset-0 viewport-gradient border-b border-outline-variant/10">
+          <div className="perspective-grid"></div>
         </div>
-
         <Viewport stlData={stlData} />
+
+        {/* Floating Viewport Controls */}
+        <div className="hidden md:flex absolute bottom-10 right-10 gap-2 studio-glass p-2 rounded-xl border border-white/10">
+          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+            <span className="material-symbols-outlined">orbit</span>
+          </button>
+          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+            <span className="material-symbols-outlined">zoom_in</span>
+          </button>
+          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+            <span className="material-symbols-outlined">pan_tool</span>
+          </button>
+          <div className="w-px h-8 bg-outline-variant/30 self-center mx-1"></div>
+          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+            <span className="material-symbols-outlined">videocam</span>
+          </button>
+        </div>
+        <div className="md:hidden absolute bottom-4 right-4 flex flex-col gap-2">
+          <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+            <span className="material-symbols-outlined">orbit</span>
+          </button>
+          <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+            <span className="material-symbols-outlined">zoom_in</span>
+          </button>
+        </div>
 
         {/* Loading overlay */}
         {!engineReady && !error && (
@@ -210,38 +219,19 @@ export default function App() {
         )}
       </main>
 
-      {/* === MOBILE BOTTOM TAB BAR === */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-[#849495]/20 z-20 safe-area-bottom">
-        <div className="flex">
-          <button
-            onClick={() => setActiveTab('configure')}
-            className={`flex-1 flex flex-col items-center py-2.5 text-[10px] font-medium transition-all ${
-              activeTab === 'configure'
-                ? 'text-primary bg-primary/5'
-                : 'text-on-surface-variant'
-            }`}
-          >
-            <span className="text-xl leading-none mb-0.5">⚙️</span>
-            Configure
-          </button>
-          <button
-            onClick={() => setActiveTab('preview')}
-            className={`flex-1 flex flex-col items-center py-2.5 text-[10px] font-medium transition-all relative ${
-              activeTab === 'preview'
-                ? 'text-primary bg-primary/5'
-                : 'text-on-surface-variant'
-            }`}
-          >
-            <span className="text-xl leading-none mb-0.5">👁</span>
-            Preview
-            {stlData && (
-              <span className="absolute top-1 right-1/4 w-1.5 h-1.5 bg-secondary rounded-full" />
-            )}
-          </button>
-        </div>
-      </nav>
+      </div>
 
-      <div className="md:hidden h-14" />
+      {/* === MOBILE BOTTOM TAB BAR === */}
+      <nav className="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container border-t border-outline-variant/10 flex justify-around items-center h-20 px-4 pb-safe">
+        <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('configure'); }} className={`flex flex-col items-center justify-center px-4 py-1 rounded-xl transition-transform active:scale-90 duration-200 ${activeTab === 'configure' ? 'text-secondary bg-secondary-container/20' : 'text-on-surface-variant hover:bg-surface-variant'}`}>
+          <span className="material-symbols-outlined">construction</span>
+          <span className="font-body-sm text-[12px]">Tools</span>
+        </a>
+        <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('preview'); }} className={`flex flex-col items-center justify-center px-4 py-1 rounded-xl transition-transform active:scale-90 duration-200 ${activeTab === 'preview' ? 'text-secondary bg-secondary-container/20' : 'text-on-surface-variant hover:bg-surface-variant'}`}>
+          <span className="material-symbols-outlined">view_in_ar</span>
+          <span className="font-body-sm text-[12px]">Workspace</span>
+        </a>
+      </nav>
     </div>
   );
 }

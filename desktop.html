@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#273647",
+                    "on-error": "#690005",
+                    "background": "#051424",
+                    "tertiary-container": "#d9d9dc",
+                    "secondary-fixed": "#5af8fb",
+                    "on-tertiary-container": "#5d5f61",
+                    "inverse-surface": "#d4e4fa",
+                    "on-primary": "#00363a",
+                    "surface-container-low": "#0d1c2d",
+                    "primary-fixed": "#7df4ff",
+                    "on-tertiary": "#2f3133",
+                    "surface-container-high": "#1c2b3c",
+                    "secondary-fixed-dim": "#2ddbde",
+                    "surface-bright": "#2c3a4c",
+                    "secondary-container": "#00cdd0",
+                    "on-surface-variant": "#b9cacb",
+                    "tertiary-fixed-dim": "#c6c6c9",
+                    "primary-fixed-dim": "#00dbe9",
+                    "surface-container": "#122131",
+                    "tertiary-fixed": "#e2e2e5",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-tertiary-fixed": "#1a1c1e",
+                    "surface-dim": "#051424",
+                    "primary-container": "#00f0ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#273647",
+                    "inverse-primary": "#006970",
+                    "surface-tint": "#00dbe9",
+                    "surface-container-lowest": "#010f1f",
+                    "on-primary-container": "#006970",
+                    "on-secondary-container": "#005253",
+                    "outline": "#849495",
+                    "on-background": "#d4e4fa",
+                    "tertiary": "#f6f5f8",
+                    "primary": "#dbfcff",
+                    "secondary": "#46eaed",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "on-surface": "#d4e4fa",
+                    "outline-variant": "#3b494b",
+                    "on-secondary-fixed": "#002020",
+                    "on-primary-fixed": "#002022",
+                    "surface": "#051424",
+                    "inverse-on-surface": "#233143",
+                    "on-secondary": "#003738",
+                    "on-tertiary-fixed-variant": "#454749"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sidebar-width": "280px",
+                    "container-max": "1440px",
+                    "margin": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "body-base": ["Inter"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .viewport-grid {
+            background-image: linear-gradient(rgba(132, 148, 149, 0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(132, 148, 149, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(0, 219, 233, 0.15);
+        }
+        .studio-glass {
+            background: rgba(18, 33, 49, 0.6);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-hidden font-body-base">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 z-50 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex justify-between items-center w-full px-margin h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tight">FlipText</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary dark:text-primary font-bold border-b-2 border-primary pb-1 font-body-base text-body-base hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Gallery</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-body-base text-body-base hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Help</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-body-base text-body-base hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-bold text-body-base hover:scale-[0.98] transition-all duration-200">Print Model</button>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="settings">settings</span>
+</div>
+</div>
+</header>
+<main class="flex h-[calc(100vh-64px)]">
+<!-- Left Panel (SideNavBar/Control Sidebar) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-[360px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col gap-unit py-margin px-6 overflow-y-auto">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md font-black text-primary dark:text-primary mb-1 uppercase tracking-tighter">Studio Tools</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant opacity-60">V1.0.4-STABLE</p>
+</div>
+<div class="space-y-6">
+<!-- Text Inputs -->
+<div class="space-y-4">
+<div class="relative group">
+<label class="block font-label-mono text-label-mono text-secondary mb-2 uppercase tracking-widest">Name 1</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-primary font-headline-md text-headline-md py-2 px-0 transition-all placeholder-surface-variant" placeholder="Enter text..." type="text" value="AUGURI"/>
+</div>
+<div class="relative group">
+<label class="block font-label-mono text-label-mono text-secondary mb-2 uppercase tracking-widest">Name 2</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-primary font-headline-md text-headline-md py-2 px-0 transition-all placeholder-surface-variant" placeholder="Enter text..." type="text" value="GABRY"/>
+</div>
+</div>
+<!-- Filler Selection Grid -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-4 uppercase tracking-widest">Filler Type</label>
+<div class="grid grid-cols-5 gap-3">
+<button class="aspect-square flex items-center justify-center rounded-lg bg-secondary-container text-on-secondary-container active-glow border border-secondary/30 transition-all">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button class="aspect-square flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="aspect-square flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined" data-icon="hexagon">hexagon</span>
+</button>
+<button class="aspect-square flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+</button>
+<button class="aspect-square flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined" data-icon="crop_square">crop_square</span>
+</button>
+</div>
+</div>
+<!-- Technical Specs (Bento Style) -->
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="p-3 border border-outline-variant rounded-lg bg-surface-container-low">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">HEIGHT</p>
+<p class="font-headline-md text-primary">32.0<span class="text-body-sm ml-1 opacity-50">mm</span></p>
+</div>
+<div class="p-3 border border-outline-variant rounded-lg bg-surface-container-low">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">WIDTH</p>
+<p class="font-headline-md text-primary">145.2<span class="text-body-sm ml-1 opacity-50">mm</span></p>
+</div>
+</div>
+</div>
+<!-- Footer Section of SideNav -->
+<div class="mt-auto pt-8 border-t border-outline-variant/30">
+<button class="w-full bg-secondary text-on-secondary font-bold py-4 rounded-lg flex items-center justify-center gap-3 active-glow hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(70,234,237,0.2)]">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+                    GENERATE 3D PREVIEW
+                </button>
+<div class="flex justify-between mt-6">
+<button class="flex items-center gap-2 text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span> Support
+                    </button>
+<button class="flex items-center gap-2 text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span> Documentation
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Right Panel (3D Viewport) -->
+<section class="flex-1 ml-[360px] relative bg-surface-dim overflow-hidden flex items-center justify-center">
+<!-- Immersion Canvas Background -->
+<div class="absolute inset-0 viewport-grid opacity-20 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<!-- Main 3D Model Representation -->
+<div class="relative z-10 w-full h-full flex items-center justify-center p-20">
+<div class="relative group cursor-grab active:cursor-grabbing w-full max-w-4xl aspect-video bg-surface-container-high rounded-xl border border-white/5 flex items-center justify-center overflow-hidden shadow-2xl">
+<img alt="3D intersection model" class="w-full h-full object-cover mix-blend-screen opacity-90 scale-110" data-alt="A highly detailed 3D render of two intersecting text strings 'AUGURI' and 'GABRY' that reveal different names depending on the viewing angle. The object has a realistic semi-matte PLA plastic texture in a soft cyan-teal color. It sits on a dark gray millimeter grid floor in a professional CAD software environment with studio lighting. The background is a deep charcoal gray with soft gradients and floating technical data indicators." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGkP6X0jv-otX9nwbn5m33Bqd5BLLFKql0v63i4EZ6jt4SHfUv17qZ4dTH5Ah8rvHptVRA7uxbTZr5cE4aWoNJH2SAs5dchvbuTdH-8-Cfz2f8JG-r3LQEgDC8ifUyPQ7xLutwh4LJtUfnMmNdvGsXCdftex78r01GNwYq8dfEuZoXqxQfpbIG7riY7GtwmhCy0i5cAxX8NMXioR-EPo-deqLGYdieUc23UpmvlL7mrqS_GOzHE1UOfa7WetuhW4QF7qgol4Gb7LPS"/>
+<!-- 3D Transform Gizmo Overlay (Center) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-64 h-64 border border-secondary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-px h-full bg-secondary/10 absolute rotate-0"></div>
+<div class="w-px h-full bg-secondary/10 absolute rotate-90"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Viewport Controls -->
+<div class="absolute bottom-10 right-10 flex gap-2 studio-glass p-2 rounded-xl border border-white/10">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="orbit">orbit</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="pan_tool">pan_tool</span>
+</button>
+<div class="w-px h-8 bg-outline-variant/30 self-center mx-1"></div>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+</button>
+</div>
+<!-- Viewport Labels -->
+<div class="absolute top-10 left-10 studio-glass px-4 py-2 rounded-lg border border-white/10 flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-label-mono text-label-mono text-primary uppercase">Perspective View</span>
+</div>
+<span class="text-on-surface-variant/40 text-[10px]">|</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">FPS: 60.0</span>
+</div>
+<!-- Compass Widget -->
+<div class="absolute top-10 right-10 w-20 h-20 pointer-events-none opacity-40">
+<div class="relative w-full h-full">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 font-label-mono text-[10px] text-secondary">Y</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 font-label-mono text-[10px] text-error">X</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 font-label-mono text-[10px] text-blue-400">Z</div>
+<div class="absolute inset-0 m-auto w-px h-full bg-secondary/30"></div>
+<div class="absolute inset-0 m-auto h-px w-full bg-error/30"></div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
