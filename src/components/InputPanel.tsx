@@ -42,7 +42,7 @@ export default function InputPanel({
 
 
       {/* Inputs — scrollable */}
-      <div className="flex-1 px-6 pb-6 md:pt-0 pt-6 space-y-6">
+      <div className="flex-1 px-5 pb-5 md:pt-0 pt-4 space-y-6" id="inputs">
 
 
         {/* Spacer */}
@@ -128,7 +128,7 @@ export default function InputPanel({
           <button
             onClick={handleGenerate}
             disabled={isGenerating || disabled || !name1.trim() || !name2.trim()}
-            className="w-full bg-secondary text-on-secondary font-bold py-4 rounded-lg flex items-center justify-center gap-3 active-glow hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(70,234,237,0.2)] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full bg-secondary text-on-secondary font-bold py-[30px] rounded-[5px] flex items-center justify-center gap-4 active-glow hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(70,234,237,0.2)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {isGenerating ? (
               <>
@@ -148,13 +148,13 @@ export default function InputPanel({
 
           {/* Spacer */}
           <div className="h-[20px] w-full" />
-          <div className="flex justify-between mt-6">
-            <button className="flex items-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors" onClick={onDownload} disabled={!hasModel}>
+          <div className="flex flex-col gap-3 mt-6">
+            <button className="w-full flex items-center justify-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors border border-white/80 rounded-[5px] py-[15px] disabled:opacity-40 disabled:cursor-not-allowed" onClick={onDownload} disabled={!hasModel}>
               <span className="material-symbols-outlined text-[18px]">download</span> DOWNLOAD STL
             </button>
 
             {onSwitchToPreview && hasModel && (
-              <button className="flex items-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors md:hidden" onClick={onSwitchToPreview}>
+              <button className="flex items-center justify-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors md:hidden" onClick={onSwitchToPreview}>
                 <span className="material-symbols-outlined text-[18px]">visibility</span> VIEW 3D
               </button>
             )}

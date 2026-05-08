@@ -30,8 +30,8 @@ export default function App() {
         if (cancelled) return;
 
         const instance = await openscadModule.createOpenSCAD({
-          print: () => {},
-          printErr: () => {},
+          print: () => { },
+          printErr: () => { },
         });
         if (cancelled) return;
         compileRef.current = instance.renderToStl.bind(instance);
@@ -135,89 +135,89 @@ export default function App() {
       <div className="flex-1 flex flex-col md:flex-row md:h-[calc(100vh-64px)] pt-16 md:pt-0 pb-20 md:pb-0">
 
 
-      {/* === INPUT PANEL === */}
-      <aside
-        className={`w-full md:w-[360px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-container border-r border-outline-variant`}
-      >
-        <InputPanel
-          onGenerate={handleGenerate}
-          isGenerating={isGenerating}
-          hasModel={!!stlData}
-          onDownload={handleDownload}
-          error={error}
-          disabled={!isReady}
-          onSwitchToPreview={() => setActiveTab('preview')}
-        />
-      </aside>
+        {/* === INPUT PANEL === */}
+        <aside
+          className={`w-full py-[80px] md:w-[360px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-container border-r border-outline-variant`}
+        >
+          <InputPanel
+            onGenerate={handleGenerate}
+            isGenerating={isGenerating}
+            hasModel={!!stlData}
+            onDownload={handleDownload}
+            error={error}
+            disabled={!isReady}
+            onSwitchToPreview={() => setActiveTab('preview')}
+          />
+        </aside>
 
-      {/* === 3D VIEWPORT === */}
-      <main
-        className={`flex-1 relative ${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-dim overflow-hidden items-center justify-center`}
-      >
-        {/* Immersion Canvas Background */}
-        <div className="hidden md:block absolute inset-0 viewport-grid opacity-20 pointer-events-none"></div>
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-        <div className="md:hidden absolute inset-0 viewport-gradient border-b border-outline-variant/10">
-          <div className="perspective-grid"></div>
-        </div>
-        <Viewport stlData={stlData} />
+        {/* === 3D VIEWPORT === */}
+        <main
+          className={`flex-1 relative ${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-dim overflow-hidden items-center justify-center`}
+        >
+          {/* Immersion Canvas Background */}
+          <div className="hidden md:block absolute inset-0 viewport-grid opacity-20 pointer-events-none"></div>
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+          <div className="md:hidden absolute inset-0 viewport-gradient border-b border-outline-variant/10">
+            <div className="perspective-grid"></div>
+          </div>
+          <Viewport stlData={stlData} />
 
-        {/* Floating Viewport Controls */}
-        <div className="hidden md:flex absolute bottom-10 right-10 gap-2 studio-glass p-2 rounded-xl border border-white/10">
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
-            <span className="material-symbols-outlined">orbit</span>
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
-            <span className="material-symbols-outlined">zoom_in</span>
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
-            <span className="material-symbols-outlined">pan_tool</span>
-          </button>
-          <div className="w-px h-8 bg-outline-variant/30 self-center mx-1"></div>
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
-            <span className="material-symbols-outlined">videocam</span>
-          </button>
-        </div>
-        <div className="md:hidden absolute bottom-4 right-4 flex flex-col gap-2">
-          <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
-            <span className="material-symbols-outlined">orbit</span>
-          </button>
-          <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
-            <span className="material-symbols-outlined">zoom_in</span>
-          </button>
-        </div>
+          {/* Floating Viewport Controls */}
+          <div className="hidden md:flex absolute bottom-10 right-10 gap-2 studio-glass p-2 rounded-xl border border-white/10">
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+              <span className="material-symbols-outlined">orbit</span>
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+              <span className="material-symbols-outlined">zoom_in</span>
+            </button>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+              <span className="material-symbols-outlined">pan_tool</span>
+            </button>
+            <div className="w-px h-8 bg-outline-variant/30 self-center mx-1"></div>
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all">
+              <span className="material-symbols-outlined">videocam</span>
+            </button>
+          </div>
+          <div className="md:hidden absolute bottom-4 right-4 flex flex-col gap-2">
+            <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+              <span className="material-symbols-outlined">orbit</span>
+            </button>
+            <button className="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+              <span className="material-symbols-outlined">zoom_in</span>
+            </button>
+          </div>
 
-        {/* Loading overlay */}
-        {!engineReady && !error && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
-            <div className="flex items-center gap-3">
-              <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              <div>
-                <p className="text-sm text-on-surface font-medium">Loading FlipText Studio</p>
-                <p className="font-label text-outline">
-                  Loading OpenSCAD engine (11MB WASM)... {!fontRef.current ? 'Loading font...' : ''}
-                </p>
+          {/* Loading overlay */}
+          {!engineReady && !error && (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
+              <div className="flex items-center gap-3">
+                <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <div>
+                  <p className="text-sm text-on-surface font-medium">Loading FlipText Studio</p>
+                  <p className="font-label text-outline">
+                    Loading OpenSCAD engine (11MB WASM)... {!fontRef.current ? 'Loading font...' : ''}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Font loading overlay */}
-        {engineReady && !fontRef.current && !error && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
-            <div className="flex items-center gap-3">
-              <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              <p className="text-sm text-on-surface font-medium">Loading Noto Sans Bold font...</p>
+          {/* Font loading overlay */}
+          {engineReady && !fontRef.current && !error && (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
+              <div className="flex items-center gap-3">
+                <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <p className="text-sm text-on-surface font-medium">Loading Noto Sans Bold font...</p>
+              </div>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+        </main>
 
       </div>
 
