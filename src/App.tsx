@@ -12,29 +12,59 @@ export default function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [engineReady, setEngineReady] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [activeTab, setActiveTab] = useState<TabId>('configure');
-  const compileRef = useRef<((code: string) => Promise<string | null>) | null>(null);
   const fontRef = useRef<Font | null>(null);
+  const workerRef = useRef<Worker | null>(null);
+  const resolveInitRef = useRef<(() => void) | null>(null);
+  const rejectInitRef = useRef<((err: any) => void) | null>(null);
+  const resolveGenRef = useRef<((stl: string) => void) | null>(null);
+  const rejectGenRef = useRef<((err: any) => void) | null>(null);
 
-  // Load OpenSCAD engine + font
+  // Load OpenSCAD Worker + font
   useEffect(() => {
     let cancelled = false;
 
     async function init() {
       try {
-        const [openscadModule, opentypeModule] = await Promise.all([
-          import('openscad-wasm-prebuilt'),
-          import('opentype.js'),
-        ]);
+        const opentypeModule = await import('opentype.js');
 
         if (cancelled) return;
 
-        const instance = await openscadModule.createOpenSCAD({
-          print: () => { },
-          printErr: () => { },
+        const worker = new Worker(new URL('./utils/openscadWorker.ts', import.meta.url), { type: 'module' });
+        workerRef.current = worker;
+
+        worker.onmessage = (e) => {
+          const { type, payload } = e.data;
+          if (type === 'INIT_DONE') {
+            resolveInitRef.current?.();
+          } else if (type === 'GENERATE_DONE') {
+            resolveGenRef.current?.(payload);
+          } else if (type === 'ERROR') {
+            if (resolveInitRef.current) {
+              rejectInitRef.current?.(payload);
+            } else if (resolveGenRef.current) {
+              rejectGenRef.current?.(payload);
+            }
+          }
+        };
+
+        worker.onerror = (e) => {
+          if (resolveInitRef.current) {
+            rejectInitRef.current?.(e.message || "Worker initialization failed");
+          }
+        };
+
+        await new Promise<void>((resolve, reject) => {
+          resolveInitRef.current = resolve;
+          rejectInitRef.current = reject;
+          worker.postMessage({ type: 'INIT' });
         });
+        
+        resolveInitRef.current = null;
+        rejectInitRef.current = null;
+
         if (cancelled) return;
-        compileRef.current = instance.renderToStl.bind(instance);
 
         try {
           const resp = await fetch(`${import.meta.env.BASE_URL}fonts/NotoSans-Bold.ttf`);
@@ -44,10 +74,11 @@ export default function App() {
             fontRef.current = font;
           }
         } catch {
-          // Font loading failure handled at generation time
+          // Font error
         }
 
         setEngineReady(true);
+        setLoadingProgress(100);
       } catch (err) {
         if (!cancelled) {
           setError(`Loading failed: ${err instanceof Error ? err.message : String(err)}`);
@@ -56,11 +87,24 @@ export default function App() {
     }
 
     init();
-    return () => { cancelled = true; };
+    
+    // Simulated progress bar
+    const progressInterval = setInterval(() => {
+      setLoadingProgress(prev => {
+        if (prev >= 90) return prev;
+        return prev + Math.random() * 15;
+      });
+    }, 500);
+
+    return () => { 
+      cancelled = true; 
+      clearInterval(progressInterval);
+      workerRef.current?.terminate();
+    };
   }, []);
 
   const handleGenerate = useCallback(async (inputs: FlipTextInputs) => {
-    if (!compileRef.current) {
+    if (!workerRef.current) {
       setError('OpenSCAD engine not loaded yet. Please wait.');
       return;
     }
@@ -75,8 +119,6 @@ export default function App() {
     setError(null);
     setStlData(null);
 
-    await new Promise(r => setTimeout(r, 50));
-
     try {
       const code = generateScadWithFont(
         inputs.name1,
@@ -85,7 +127,11 @@ export default function App() {
         font,
       );
 
-      const stl = await compileRef.current(code);
+      const stl = await new Promise<string>((resolve, reject) => {
+        resolveGenRef.current = resolve;
+        rejectGenRef.current = reject;
+        workerRef.current?.postMessage({ type: 'GENERATE', payload: { scadCode: code } });
+      });
 
       if (stl && stl.trim().startsWith('solid') && stl.length > 100) {
         setStlData(stl);
@@ -115,6 +161,35 @@ export default function App() {
   }, [stlData]);
 
   const isReady = engineReady && fontRef.current !== null;
+
+  if (!isReady && !error) {
+    return (
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-background font-body-base">
+        <div className="w-full max-w-sm flex flex-col items-center gap-6 p-8 bg-surface-container rounded-2xl border border-outline-variant shadow-2xl">
+          <div className="flex items-center gap-3">
+            <span className="font-headline-md text-3xl font-bold text-primary tracking-tight [font-variant:small-caps]">FlipText</span>
+            <span className="px-2 py-0.5 rounded text-xs font-bold bg-primary/20 text-primary uppercase tracking-wider">Studio</span>
+          </div>
+          
+          <div className="w-full flex flex-col gap-2">
+            <div className="flex justify-between items-end">
+              <span className="text-sm font-medium text-on-surface-variant">
+                {!engineReady ? "Loading OpenSCAD Engine (11MB)" : "Initializing Fonts"}
+              </span>
+              <span className="text-sm font-mono text-primary">{Math.min(100, Math.round(loadingProgress))}%</span>
+            </div>
+            
+            <div className="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${Math.min(100, Math.round(loadingProgress))}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex flex-col overflow-hidden bg-background font-body-base">
@@ -187,36 +262,7 @@ export default function App() {
             </button>
           </div>
 
-          {/* Loading overlay */}
-          {!engineReady && !error && (
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
-              <div className="flex items-center gap-3">
-                <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                <div>
-                  <p className="text-sm text-on-surface font-medium">Loading FlipText Studio</p>
-                  <p className="font-label text-outline">
-                    Loading OpenSCAD engine (11MB WASM)... {!fontRef.current ? 'Loading font...' : ''}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Font loading overlay */}
-          {engineReady && !fontRef.current && !error && (
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-surface-container/80 backdrop-blur-sm rounded-lg px-5 py-3 border border-[#849495]/20 shadow-xl">
-              <div className="flex items-center gap-3">
-                <svg className="animate-spin h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                <p className="text-sm text-on-surface font-medium">Loading Noto Sans Bold font...</p>
-              </div>
-            </div>
-          )}
+          {/* Removed old loading overlays since we now have a full screen one */}
         </main>
 
       </div>
