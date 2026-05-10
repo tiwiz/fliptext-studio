@@ -42,14 +42,11 @@ export default function InputPanel({
 
 
       {/* Inputs — scrollable */}
-      <div className="flex-1 px-5 pb-5 md:pt-0 pt-4 space-y-4">
-
-
-        {/* Spacer */}
+      <div className="flex-1 px-5 pb-5 md:pt-0 pt-3 space-y-3">
 
 
         {/* Text Inputs */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {/* Name 1 */}
           <div className="relative group">
             <label className="block font-label-mono text-secondary mb-2 uppercase tracking-widest">
@@ -71,7 +68,7 @@ export default function InputPanel({
           </div>
 
         {/* Spacer */}
-        <div className="h-[20px] w-full" />
+        <div className="h-[10px] w-full" />
 
         {/* Name 2 */}
           <div className="relative group">
@@ -95,7 +92,7 @@ export default function InputPanel({
         </div>
 
         {/* Spacer */}
-        <div className="h-[20px] w-full" />
+        <div className="h-[10px] w-full" />
 
         {/* Filler Selector */}
         <div>
@@ -121,10 +118,10 @@ export default function InputPanel({
         </div>
 
         {/* Spacer */}
-        <div className="h-[30px] w-full" />
+        <div className="h-[16px] w-full" />
 
         {/* Generate Button - Primary CTA */}
-        <div className="pt-8 md:border-t md:border-outline-variant/30 mt-auto">
+        <div className="pt-4 md:border-t md:border-outline-variant/30 mt-auto">
           <button
             onClick={handleGenerate}
             disabled={isGenerating || disabled || !name1.trim() || !name2.trim()}
@@ -147,9 +144,9 @@ export default function InputPanel({
           </button>
 
           {/* Spacer */}
-          <div className="h-[20px] w-full" />
-          <div className="flex flex-col gap-3 mt-6">
-            <button className="w-full flex items-center justify-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors border border-white/80 rounded-[5px] py-[15px] disabled:opacity-40 disabled:cursor-not-allowed" onClick={onDownload} disabled={!hasModel}>
+          <div className="h-[10px] w-full" />
+          <div className="flex flex-col gap-3 mt-3">
+            <button className="w-full flex items-center justify-center gap-2 text-on-surface-variant font-label-mono hover:text-primary transition-colors border border-white/80 rounded-[5px] py-[12px] disabled:opacity-40 disabled:cursor-not-allowed" onClick={onDownload} disabled={!hasModel}>
               <span className="material-symbols-outlined text-[18px]">download</span> DOWNLOAD STL
             </button>
 
