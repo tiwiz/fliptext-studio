@@ -212,7 +212,7 @@ export default function App() {
 
         {/* === INPUT PANEL === */}
         <aside
-          className={`w-full py-[80px] md:w-[360px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-container border-r border-outline-variant`}
+          className={`w-full py-[20px] md:w-[360px] md:flex-shrink-0 ${activeTab === 'configure' ? 'flex' : 'hidden'} md:flex flex-col h-full bg-surface-container border-r border-outline-variant`}
         >
           <InputPanel
             onGenerate={handleGenerate}

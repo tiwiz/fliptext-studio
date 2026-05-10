@@ -42,11 +42,11 @@ export default function InputPanel({
 
 
       {/* Inputs — scrollable */}
-      <div className="flex-1 px-5 pb-5 md:pt-0 pt-4 space-y-6" id="inputs">
+      <div className="flex-1 px-5 pb-5 md:pt-0 pt-4 space-y-4">
 
 
         {/* Spacer */}
-        <div className="h-[50px] w-full" />
+
 
         {/* Text Inputs */}
         <div className="space-y-4">
@@ -70,10 +70,10 @@ export default function InputPanel({
             <p className="font-label-mono text-outline mt-1.5 text-[10px]">{name1.length}/12 chars</p>
           </div>
 
-          {/* Spacer */}
-          <div className="h-[50px] w-full" />
+        {/* Spacer */}
+        <div className="h-[20px] w-full" />
 
-          {/* Name 2 */}
+        {/* Name 2 */}
           <div className="relative group">
             <label className="block font-label-mono text-secondary mb-2 uppercase tracking-widest">
               Name 2
@@ -95,7 +95,7 @@ export default function InputPanel({
         </div>
 
         {/* Spacer */}
-        <div className="h-[50px] w-full" />
+        <div className="h-[20px] w-full" />
 
         {/* Filler Selector */}
         <div>
@@ -121,7 +121,7 @@ export default function InputPanel({
         </div>
 
         {/* Spacer */}
-        <div className="h-[80px] w-full" />
+        <div className="h-[30px] w-full" />
 
         {/* Generate Button - Primary CTA */}
         <div className="pt-8 md:border-t md:border-outline-variant/30 mt-auto">
