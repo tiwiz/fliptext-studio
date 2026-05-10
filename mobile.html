@@ -1,270 +1,312 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FlipText Studio - Mobile</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error": "#690005",
-                    "error-container": "#93000a",
-                    "primary-container": "#00f0ff",
-                    "on-surface": "#d4e4fa",
-                    "primary-fixed": "#7df4ff",
-                    "on-secondary-fixed": "#002020",
-                    "surface-container-high": "#1c2b3c",
-                    "secondary": "#46eaed",
-                    "on-primary-fixed": "#002022",
-                    "surface": "#051424",
-                    "tertiary-fixed-dim": "#c6c6c9",
-                    "on-secondary-fixed-variant": "#004f51",
-                    "on-tertiary": "#2f3133",
-                    "on-background": "#d4e4fa",
-                    "on-error-container": "#ffdad6",
-                    "primary-fixed-dim": "#00dbe9",
-                    "on-tertiary-fixed-variant": "#454749",
-                    "secondary-fixed-dim": "#2ddbde",
-                    "on-tertiary-container": "#5d5f61",
-                    "surface-dim": "#051424",
-                    "surface-variant": "#273647",
-                    "on-surface-variant": "#b9cacb",
-                    "surface-container-highest": "#273647",
-                    "surface-bright": "#2c3a4c",
-                    "surface-tint": "#00dbe9",
-                    "on-primary": "#00363a",
-                    "on-secondary-container": "#005253",
-                    "surface-container-lowest": "#010f1f",
-                    "surface-container-low": "#0d1c2d",
-                    "tertiary": "#f6f5f8",
-                    "outline": "#849495",
-                    "inverse-on-surface": "#233143",
-                    "on-tertiary-fixed": "#1a1c1e",
-                    "tertiary-fixed": "#e2e2e5",
-                    "tertiary-container": "#d9d9dc",
-                    "secondary-container": "#00cdd0",
-                    "primary": "#dbfcff",
-                    "on-secondary": "#003738",
-                    "on-primary-container": "#006970",
-                    "error": "#ffb4ab",
-                    "on-primary-fixed-variant": "#004f54",
-                    "background": "#051424",
-                    "secondary-fixed": "#5af8fb",
-                    "outline-variant": "#3b494b",
-                    "inverse-surface": "#d4e4fa",
-                    "inverse-primary": "#006970",
-                    "surface-container": "#122131"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "24px",
-                    "margin": "32px",
-                    "sidebar-width": "280px",
-                    "unit": "4px",
-                    "container-max": "1440px"
-            },
-            "fontFamily": {
-                    "headline-md": ["Hanken Grotesk"],
-                    "body-sm": ["Inter"],
-                    "body-base": ["Inter"],
-                    "display-lg": ["Hanken Grotesk"],
-                    "label-mono": ["JetBrains Mono"]
-            },
-            "fontSize": {
-                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
-                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                    "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}]
-            }
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>FlipText Studio - Mobile</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "primary-container": "#00f0ff",
+            "on-surface": "#d4e4fa",
+            "primary-fixed": "#7df4ff",
+            "on-secondary-fixed": "#002020",
+            "surface-container-high": "#1c2b3c",
+            "secondary": "#46eaed",
+            "on-primary-fixed": "#002022",
+            "surface": "#051424",
+            "tertiary-fixed-dim": "#c6c6c9",
+            "on-secondary-fixed-variant": "#004f51",
+            "on-tertiary": "#2f3133",
+            "on-background": "#d4e4fa",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#00dbe9",
+            "on-tertiary-fixed-variant": "#454749",
+            "secondary-fixed-dim": "#2ddbde",
+            "on-tertiary-container": "#5d5f61",
+            "surface-dim": "#051424",
+            "surface-variant": "#273647",
+            "on-surface-variant": "#b9cacb",
+            "surface-container-highest": "#273647",
+            "surface-bright": "#2c3a4c",
+            "surface-tint": "#00dbe9",
+            "on-primary": "#00363a",
+            "on-secondary-container": "#005253",
+            "surface-container-lowest": "#010f1f",
+            "surface-container-low": "#0d1c2d",
+            "tertiary": "#f6f5f8",
+            "outline": "#849495",
+            "inverse-on-surface": "#233143",
+            "on-tertiary-fixed": "#1a1c1e",
+            "tertiary-fixed": "#e2e2e5",
+            "tertiary-container": "#d9d9dc",
+            "secondary-container": "#00cdd0",
+            "primary": "#dbfcff",
+            "on-secondary": "#003738",
+            "on-primary-container": "#006970",
+            "error": "#ffb4ab",
+            "on-primary-fixed-variant": "#004f54",
+            "background": "#051424",
+            "secondary-fixed": "#5af8fb",
+            "outline-variant": "#3b494b",
+            "inverse-surface": "#d4e4fa",
+            "inverse-primary": "#006970",
+            "surface-container": "#122131"
           },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "24px",
+            "margin": "32px",
+            "sidebar-width": "280px",
+            "unit": "4px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "headline-md": ["Hanken Grotesk"],
+            "body-sm": ["Inter"],
+            "body-base": ["Inter"],
+            "display-lg": ["Hanken Grotesk"],
+            "label-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-mono": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }]
+          }
         },
-      }
-    </script>
-<style>
-        body {
-            background-color: #051424;
-            color: #d4e4fa;
-            -webkit-font-smoothing: antialiased;
-        }
-        .viewport-gradient {
-            background: radial-gradient(circle at center, #122131 0%, #051424 100%);
-        }
-        .glass-panel {
-            background: rgba(18, 33, 49, 0.6);
-            backdrop-filter: blur(12px);
-        }
-        .perspective-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
-            transform: perspective(1000px) rotateX(60deg);
-            width: 200%;
-            height: 200%;
-            position: absolute;
-            bottom: -50%;
-            left: -50%;
-        }
-    </style>
-<style>
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #051424;
+      color: #d4e4fa;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .viewport-gradient {
+      background: radial-gradient(circle at center, #122131 0%, #051424 100%);
+    }
+
+    .glass-panel {
+      background: rgba(18, 33, 49, 0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .perspective-grid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+      transform: perspective(1000px) rotateX(60deg);
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      bottom: -50%;
+      left: -50%;
+    }
+  </style>
+  <style>
     body {
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+</head>
+
 <body class="font-body-base overflow-x-hidden">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-md dark:bg-surface/60 border-b border-outline-variant/10 flex justify-between items-center px-gutter h-16">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="deployed_code">deployed_code</span>
-<span class="font-headline-md text-headline-md font-bold text-on-surface dark:text-primary-fixed">Studio</span>
-</div>
-<div class="flex items-center gap-4">
-<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-100">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-</button>
-</div>
-</header>
-<main class="pt-16 pb-32">
-<!-- 3D Viewport Section -->
-<section class="relative h-[353px] w-full overflow-hidden viewport-gradient border-b border-outline-variant/10">
-<div class="perspective-grid"></div>
-<!-- Placeholder for 3D Content -->
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-<div class="relative group">
-<div class="absolute inset-0 blur-2xl bg-secondary/20 rounded-full"></div>
-<img alt="3D Model Preview" class="relative z-10 w-full max-w-[280px] drop-shadow-[0_0_15px_rgba(70,234,237,0.3)]" data-alt="A detailed 3D render of a 'flip-text' optical illusion sculpture made of glowing teal plastic. The sculpture shows the words 'AUGURI' from one angle and 'GABRY' from another. It sits on a dark technical grid with dramatic cyan rim lighting and soft shadows in a dark studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsO3_W7woWTMjLkhF3vt0a0SquHTnB29VW8VXnAAqiLAqm30Auw0yfZ0aV3h_ISODr0s7U5DuxZBDXk809RVtC05Ib6zUC75ZxXjkVXxGv6Rdeq-g1o21MsexJ3VkkbcvZbKigR57rRmvkaaMNO3-d_9V69RALRezMflkyoV-E28DoiAgbi55A9LopCd984d5m21wN2xPCCJHbYBZg6ghevbRawNwRR218-HXvjXVHDoLzQnsQvkC8ha0Pu6p00lwQEqNiAin97K6_"/>
-</div>
-</div>
-<!-- Viewport Controls -->
-<div class="absolute bottom-4 right-4 flex flex-col gap-2">
-<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
-<span class="material-symbols-outlined" data-icon="orbit">orbit</span>
-</button>
-<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
-<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
-</button>
-<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
-<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
-</button>
-</div>
-<div class="absolute top-4 left-4">
-<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-mono font-label-mono border border-secondary/20 uppercase tracking-widest">
-                    Preview Mode
-                </span>
-</div>
-</section>
-<!-- Customization Section -->
-<section class="px-gutter pt-1.5 pb-5 space-y-5">
-<!-- Text Inputs -->
-<div class="space-y-4">
-<div class="group">
-<label class="block font-label-mono text-label-mono text-outline uppercase mb-2">Name 1</label>
-<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-headline-md font-headline-md text-on-surface transition-colors duration-300 uppercase tracking-wider h-14" placeholder="ENTER TEXT" type="text" value="AUGURI"/>
-</div>
-<div class="group">
-<label class="block font-label-mono text-label-mono text-outline uppercase mb-2">Name 2</label>
-<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-headline-md font-headline-md text-on-surface transition-colors duration-300 uppercase tracking-wider h-14" placeholder="ENTER TEXT" type="text" value="GABRY"/>
-</div>
-</div>
-<!-- Filler Type Selection -->
-<div>
-<label class="block font-label-mono text-label-mono text-outline uppercase mb-4">Filler Type</label>
-<div class="grid grid-cols-5 gap-3">
-<button class="aspect-square flex flex-col items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container border border-secondary transition-all active:scale-90">
-<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
-<span class="text-[10px] mt-1 font-label-mono">HEART</span>
-</button>
-<button class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
-<span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
-<span class="text-[10px] mt-1 font-label-mono">HEART1</span>
-</button>
-<button class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
-<span class="material-symbols-outlined" data-icon="heart_plus">heart_plus</span>
-<span class="text-[10px] mt-1 font-label-mono">HEART2</span>
-</button>
-<button class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
-<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
-<span class="text-[10px] mt-1 font-label-mono">DIAMOND</span>
-</button>
-<button class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
-<span class="material-symbols-outlined" data-icon="crop_square">crop_square</span>
-<span class="text-[10px] mt-1 font-label-mono">FRAME</span>
-</button>
-</div>
-</div>
-<!-- Dimensions -->
-<div class="grid grid-cols-2 gap-gutter">
-<div class="space-y-2">
-<label class="block font-label-mono text-label-mono text-outline uppercase">Height (mm)</label>
-<div class="relative">
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-4 py-3 font-label-mono text-secondary focus:ring-1 focus:ring-secondary focus:border-secondary outline-none" type="number" value="40"/>
-<div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 opacity-40">
-<span class="material-symbols-outlined text-[16px]" data-icon="expand_less">expand_less</span>
-<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</div>
-<div class="space-y-2">
-<label class="block font-label-mono text-label-mono text-outline uppercase">Width (mm)</label>
-<div class="relative">
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-4 py-3 font-label-mono text-secondary focus:ring-1 focus:ring-secondary focus:border-secondary outline-none" type="number" value="120"/>
-<div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 opacity-40">
-<span class="material-symbols-outlined text-[16px]" data-icon="expand_less">expand_less</span>
-<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Subtle Status Area -->
-<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 flex items-center gap-4">
-<div class="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(70,234,237,0.6)]"></div>
-<div class="flex-1">
-<p class="text-label-mono text-[10px] text-outline uppercase">Current Mesh State</p>
-<p class="text-body-sm text-on-surface-variant">Optimal for FDM Printing</p>
-</div>
-<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
-</div>
-</section>
-</main>
-<!-- Sticky Bottom Action -->
-<div class="fixed bottom-20 left-0 w-full px-gutter pb-gutter pointer-events-none">
-<div class="max-w-md mx-auto pointer-events-auto">
-<button class="w-full bg-secondary text-on-secondary py-4 rounded-xl font-headline-md flex items-center justify-center gap-3 shadow-2xl shadow-secondary/20 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
-<span>Generate 3D Preview</span>
-</button>
-</div>
-</div>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container dark:bg-surface-container border-t border-outline-variant/10 shadow-lg dark:shadow-none flex justify-around items-center h-20 px-4 pb-safe">
-<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed bg-secondary-container/20 rounded-xl px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
-<span class="font-body-sm text-body-sm">Workspace</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
-<span class="font-body-sm text-body-sm">Library</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="construction">construction</span>
-<span class="font-body-sm text-body-sm">Tools</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="print">print</span>
-<span class="font-body-sm text-body-sm">Print</span>
-</a>
-</nav>
-</body></html>
+  <!-- TopAppBar -->
+  <header
+    class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-md dark:bg-surface/60 border-b border-outline-variant/10 flex justify-between items-center px-gutter h-16">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-primary dark:text-primary-fixed"
+        data-icon="deployed_code">deployed_code</span>
+      <span class="font-headline-md text-headline-md font-bold text-on-surface dark:text-primary-fixed">Studio</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button
+        class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-100">
+        <span class="material-symbols-outlined" data-icon="settings">settings</span>
+      </button>
+    </div>
+  </header>
+  <main class="pt-16 pb-32">
+    <!-- 3D Viewport Section -->
+    <section class="relative h-[353px] w-full overflow-hidden viewport-gradient border-b border-outline-variant/10">
+      <div class="perspective-grid"></div>
+      <!-- Placeholder for 3D Content -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="relative group">
+          <div class="absolute inset-0 blur-2xl bg-secondary/20 rounded-full"></div>
+          <img alt="3D Model Preview"
+            class="relative z-10 w-full max-w-[280px] drop-shadow-[0_0_15px_rgba(70,234,237,0.3)]"
+            data-alt="A detailed 3D render of a 'flip-text' optical illusion sculpture made of glowing teal plastic. The sculpture shows the words 'AUGURI' from one angle and 'GABRY' from another. It sits on a dark technical grid with dramatic cyan rim lighting and soft shadows in a dark studio environment."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsO3_W7woWTMjLkhF3vt0a0SquHTnB29VW8VXnAAqiLAqm30Auw0yfZ0aV3h_ISODr0s7U5DuxZBDXk809RVtC05Ib6zUC75ZxXjkVXxGv6Rdeq-g1o21MsexJ3VkkbcvZbKigR57rRmvkaaMNO3-d_9V69RALRezMflkyoV-E28DoiAgbi55A9LopCd984d5m21wN2xPCCJHbYBZg6ghevbRawNwRR218-HXvjXVHDoLzQnsQvkC8ha0Pu6p00lwQEqNiAin97K6_" />
+        </div>
+      </div>
+      <!-- Viewport Controls -->
+      <div class="absolute bottom-4 right-4 flex flex-col gap-2">
+        <button
+          class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+          <span class="material-symbols-outlined" data-icon="orbit">orbit</span>
+        </button>
+        <button
+          class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+          <span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+        </button>
+        <button
+          class="glass-panel w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant/20 text-primary active:scale-90 transition-transform">
+          <span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+        </button>
+      </div>
+      <div class="absolute top-4 left-4">
+        <span
+          class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-mono font-label-mono border border-secondary/20 uppercase tracking-widest">
+          Preview Mode
+        </span>
+      </div>
+    </section>
+    <!-- Customization Section -->
+    <section class="px-gutter pt-1.5 pb-5 space-y-5">
+      <!-- Text Inputs -->
+      <div class="group">
+        <label class="block font-label-mono text-label-mono text-outline uppercase mb-2">Name 1</label>
+        <input
+          class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-headline-md font-headline-md text-on-surface transition-colors duration-300 uppercase tracking-wider h-14"
+          placeholder="ENTER TEXT" type="text" value="AUGURI" />
+      </div>
+      <div class="group">
+        <label class="block font-label-mono text-label-mono text-outline uppercase mb-2">Name 2</label>
+        <input
+          class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 text-headline-md font-headline-md text-on-surface transition-colors duration-300 uppercase tracking-wider h-14"
+          placeholder="ENTER TEXT" type="text" value="GABRY" />
+      </div>
+      </div>
+      <!-- Filler Type Selection -->
+      <div>
+        <label class="block font-label-mono text-label-mono text-outline uppercase mb-4">Filler Type</label>
+        <div class="grid grid-cols-5 gap-3">
+          <button
+            class="aspect-square flex flex-col items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container border border-secondary transition-all active:scale-90">
+            <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+            <span class="text-[10px] mt-1 font-label-mono">HEART</span>
+          </button>
+          <button
+            class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
+            <span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
+            <span class="text-[10px] mt-1 font-label-mono">HEART1</span>
+          </button>
+          <button
+            class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
+            <span class="material-symbols-outlined" data-icon="heart_plus">heart_plus</span>
+            <span class="text-[10px] mt-1 font-label-mono">HEART2</span>
+          </button>
+          <button
+            class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
+            <span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+            <span class="text-[10px] mt-1 font-label-mono">DIAMOND</span>
+          </button>
+          <button
+            class="aspect-square flex flex-col items-center justify-center rounded-xl bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 active:scale-90 transition-all">
+            <span class="material-symbols-outlined" data-icon="crop_square">crop_square</span>
+            <span class="text-[10px] mt-1 font-label-mono">FRAME</span>
+          </button>
+        </div>
+      </div>
+      <!-- Dimensions -->
+      <div class="grid grid-cols-2 gap-gutter">
+        <div class="space-y-2">
+          <label class="block font-label-mono text-label-mono text-outline uppercase">Height (mm)</label>
+          <div class="relative">
+            <input
+              class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-4 py-3 font-label-mono text-secondary focus:ring-1 focus:ring-secondary focus:border-secondary outline-none"
+              type="number" value="40" />
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 opacity-40">
+              <span class="material-symbols-outlined text-[16px]" data-icon="expand_less">expand_less</span>
+              <span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="block font-label-mono text-label-mono text-outline uppercase">Width (mm)</label>
+          <div class="relative">
+            <input
+              class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-4 py-3 font-label-mono text-secondary focus:ring-1 focus:ring-secondary focus:border-secondary outline-none"
+              type="number" value="120" />
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 opacity-40">
+              <span class="material-symbols-outlined text-[16px]" data-icon="expand_less">expand_less</span>
+              <span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Subtle Status Area -->
+      <div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 flex items-center gap-4">
+        <div class="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(70,234,237,0.6)]"></div>
+        <div class="flex-1">
+          <p class="text-label-mono text-[10px] text-outline uppercase">Current Mesh State</p>
+          <p class="text-body-sm text-on-surface-variant">Optimal for FDM Printing</p>
+        </div>
+        <span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+      </div>
+    </section>
+  </main>
+  <!-- Sticky Bottom Action -->
+  <div class="fixed bottom-20 left-0 w-full px-gutter pb-gutter pointer-events-none">
+    <div class="max-w-md mx-auto pointer-events-auto">
+      <button
+        class="w-full bg-secondary text-on-secondary py-4 rounded-xl font-headline-md flex items-center justify-center gap-3 shadow-2xl shadow-secondary/20 active:scale-95 transition-all duration-200">
+        <span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+        <span>Generate 3D Preview</span>
+      </button>
+    </div>
+  </div>
+  <!-- BottomNavBar -->
+  <nav
+    class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container dark:bg-surface-container border-t border-outline-variant/10 shadow-lg dark:shadow-none flex justify-around items-center h-20 px-4 pb-safe">
+    <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed bg-secondary-container/20 rounded-xl px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200"
+      href="#">
+      <span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+      <span class="font-body-sm text-body-sm">Workspace</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200"
+      href="#">
+      <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+      <span class="font-body-sm text-body-sm">Library</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200"
+      href="#">
+      <span class="material-symbols-outlined" data-icon="construction">construction</span>
+      <span class="font-body-sm text-body-sm">Tools</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-transform active:scale-90 duration-200"
+      href="#">
+      <span class="material-symbols-outlined" data-icon="print">print</span>
+      <span class="font-body-sm text-body-sm">Print</span>
+    </a>
+  </nav>
+</body>
+
+</html>
